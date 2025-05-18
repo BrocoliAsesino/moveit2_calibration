@@ -13,12 +13,15 @@ repository. For background, see this [Github discussion](https://github.com/ros-
 ### Build from Source
 
 ```sh
-mkdir -p ws_moveit/src
-cd ws_moveit
-git clone https://github.com/ros-planning/moveit_calibration.git -b ros2 src/moveit_calibration
-vcs import src < src/moveit_calibration/moveit_calibration.repos --skip-existing
-rosdep install -r --from-paths src --ignore-src --rosdistro ${ROS_DISTRO} -y
-colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release
+cd moveit2_calibration 
+git checkout ros2_port 
+vcs import . < ./moveit_calibration.repos --skip-existing 
+
+cd ws  
+sudo apt update 
+rosdep update     
+rosdep install --from-paths src --ignore-src -r -y 
+colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 ```
 
 ### Example
