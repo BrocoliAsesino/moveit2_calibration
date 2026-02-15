@@ -14,7 +14,7 @@ repository. For background, see this [Github discussion](https://github.com/ros-
 
 ```sh
 cd moveit2_calibration 
-git checkout dev 
+git checkout ros2_stable 
 vcs import . < ./moveit_calibration.repos --skip-existing 
 
 cd ws  
